@@ -18,5 +18,8 @@ COPY . /app/
 COPY admin/start.sh /usr/local/bin/start-react.sh
 RUN chmod +x /usr/local/bin/start-react.sh
 
+# Crear un enlace para que el CSS encuentre la imagen en la ruta que espera
+RUN mkdir -p /app/src/public && ln -s /app/public/imagenes /app/src/public/imagenes
+
 # 6. Ejecutar su EP
 ENTRYPOINT ["/usr/local/bin/start-react.sh"]

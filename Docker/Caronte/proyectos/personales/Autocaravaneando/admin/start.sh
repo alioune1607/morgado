@@ -25,6 +25,8 @@ fi
 # Si no existe build, lanzamos npm run build
 if [ ! -d "build" ]; then
     echo "Compilando proyecto (npm run build)..." >> $LOG_FILE
+    export CI=false
+    export ESCAPE_ESLINT=true
     npm run build
     if [ $? -ne 0 ]; then
         echo "[ERROR] Falló npm run build" >> $LOG_FILE
