@@ -1,22 +1,17 @@
+version: '3.8'
+
 services:
-  web:
-    build: 
-      context: ${CONTEXTO}
-      dockerfile: ./dockerfiles/JS/react/Dockerfile
-      args: #variables en DFILE para la construccion (build) de la imagen
-        - PROYECTO=${PROYECTO}
-        - USUARIO=${USUARIO}
-        - TIPO=${TIPO}
-        
-    # image: ${FIRMA}/ub${INICIALES}${PROYECTO}
-    image: ${FIRMA}/ub${PROYECTO}
-    hostname: ${CONTENEDOR}
+  autocaravaneando:
+    # Usamos la imagen final que acabas de construir
+    image: alioune/ubautocaravaneando
+    # El nombre del contenedor cogerá la variable del archivo .env
     container_name: ${CONTENEDOR}
+    # Cargamos el archivo de variables
     env_file:
       - .env
-    volumes:
-      - ./logs:/root/logs
     ports:
-      - "${PORT_WWW}:80"
-      - "${PORT_NODE}:3000"
-
+      - "${PORT_NODE}:3000"  # Desarrollo (React) -> 3010:3000
+      - "${PORT_WWW}:80"     # Producción (Nginx) -> 8810:80
+      - "${PORT_SSH}:22"     # Ciberseguridad (SSH) -> 45678:22
+    # Para que el contenedor no se muera
+    restart: always
