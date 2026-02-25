@@ -11,7 +11,7 @@ RUN node --version && npm --version
 EXPOSE 3000
 
 # 4. Copiamos el código del proyecto al directorio /app
-WORKDIR /app
+WORKDIR /app/src
 COPY . /app/
 
 # 5. Copiar su entrypoint (ruta exacta gracias a lo que me has dicho)

@@ -9,7 +9,7 @@ echo "=== INICIANDO CONFIGURACIÓN ALIOUNE REACT ===" >> $LOG_FILE
 /usr/local/bin/start-nginx.sh &
 
 # Entramos en el proyecto /app
-cd /app
+cd /app/src
 
 # Si no existe node_modules, hacemos npm install
 if [ ! -d "node_modules" ]; then
