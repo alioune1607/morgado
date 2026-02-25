@@ -44,4 +44,6 @@ echo "[OK] Archivos copiados y permisos asignados" >> $LOG_FILE
 
 # Lanzar el proyecto en desarrollo en el puerto 3000
 echo "Lanzando npm start..." >> $LOG_FILE
+export CI=false
+export GENERATE_SOURCEMAP=false
 npm start
