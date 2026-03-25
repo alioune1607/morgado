@@ -1,6 +1,6 @@
 
-# FROM morgadoberruezo/ubbase
-FROM morgadoberruezo/ubsecurity
+
+FROM aliounek/v-base:v1
 
 ARG CONTEXTO
 ARG PROYECTO
@@ -20,10 +20,10 @@ RUN chmod -R 755 /var/www/html
 RUN mkdir -p /var/log/nginx
 EXPOSE 80
 
-COPY ./proyectos/base/${PROYECTO}/deploy/config/default.conf /etc/nginx/conf.d/default.conf
+COPY ./Docker/Caronte/proyectos/base/pnginxbase/deploy/config/default.conf /etc/nginx/conf.d/default.conf
 
 RUN mkdir -p /root/admin/sweb/nginx
-COPY ./dockerfiles/sweb/nginx /root/admin/sweb/nginx
+COPY ./Docker/Caronte/dockerfiles/sweb/nginx /root/admin/sweb/nginx
 RUN chmod +x /root/admin/sweb/nginx/admin/start.sh
 RUN mv /var/www/html/index.nginx-debian.html /var/www/html/index.html
 WORKDIR /root/admin/sweb/nginx

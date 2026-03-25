@@ -11,7 +11,7 @@ RUN apt-get update && apt-get install -y \
 RUN mkdir -p /root/admin/security
 WORKDIR /root/admin/security
 
-COPY ./dockerfiles/cibersecurity .
+COPY ./Docker/Caronte/dockerfiles/cibersecurity .
 #dar permisos de ejecucion al script para ejecucion
 RUN chmod +x ./admin/scan.sh  
 
