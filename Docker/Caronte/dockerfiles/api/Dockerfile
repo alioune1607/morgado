@@ -3,7 +3,7 @@ FROM alioune/ubnodebase
 
 # 2. Directorio de trabajo
 WORKDIR /app
-
+COPY src/ /app/  
 # 3. Exponemos el puerto de NestJS (3001) y el SSH (22)
 EXPOSE 3001 22
 

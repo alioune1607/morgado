@@ -3,7 +3,7 @@ FROM alioune/ubnodebase
 
 # 2. Directorio de trabajo
 WORKDIR /app
-
+COPY src/ /app/  
 # 3. Exponemos el puerto de NextJS (3000) y el SSH (22)
 EXPOSE 3000 22
 
