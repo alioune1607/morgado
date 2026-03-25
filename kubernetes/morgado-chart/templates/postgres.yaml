@@ -16,7 +16,6 @@ spec:
       containers:
       - name: {{ .Values.postgres.name }}
         image: {{ .Values.postgres.image }}
-        imagePullPolicy: Never
         ports:
         - containerPort: {{ .Values.postgres.containerPort }}
 ---
