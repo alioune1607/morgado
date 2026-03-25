@@ -1,0 +1,23 @@
+# Definimos el namespace común para todos los recursos
+namespace: examen-alioune
+
+# Variables de la Base de Datos
+postgres:
+  name: postgres-db
+  image: alioune/ubpostgres
+  containerPort: 5432
+  servicePort: 5432
+
+# Variables de la API (NestJS)
+api:
+  name: nestjs-api
+  image: alioune/ubapi
+  containerPort: 3001
+  servicePort: 3001
+
+# Variables del Frontend (NextJS)
+frontend:
+  name: nextjs-front
+  image: alioune/ubfrontend
+  containerPort: 3000
+  servicePort: 80 # Lo expondremos en el puerto 80 para el navegador

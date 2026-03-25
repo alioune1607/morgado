@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.api.name }}
+  namespace: {{ .Values.namespace }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Values.api.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.api.name }}
+    spec:
+      containers:
+      - name: {{ .Values.api.name }}
+        image: {{ .Values.api.image }}
+        ports:
+        - containerPort: {{ .Values.api.containerPort }}
+        # Aquí le decimos a la API cómo conectarse a la BD
+        env:
+        - name: DATABASE_HOST
+          value: {{ .Values.postgres.name }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.api.name }}
+  namespace: {{ .Values.namespace }}
+spec:
+  type: NodePort # Para poder acceder desde fuera en las pruebas
+  selector:
+    app: {{ .Values.api.name }}
+  ports:
+    - protocol: TCP
+      port: {{ .Values.api.servicePort }}
+      targetPort: {{ .Values.api.containerPort }}
+      nodePort: 30001 # Puerto fijo para probar con Postman
