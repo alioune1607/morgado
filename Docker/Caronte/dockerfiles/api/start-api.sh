@@ -13,4 +13,4 @@ npm install
 
 # 3. Lanzamos la API
 echo "Lanzando API..." >> $LOG_FILE
-npm run start:dev || npm run dev || npm start
+npm run dev -- -H 0.0.0.0 -p 3000 || npm start -- -H 0.0.0.0 -p 3000
